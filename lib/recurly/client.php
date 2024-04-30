@@ -3176,6 +3176,51 @@ endpoint to obtain only the newly generated `UniqueCouponCodes`.
     }
   
     /**
+     * Authorize a purchase
+     *
+     * @param array $body    The body of the request.
+     * @param array $options Associative array of optional parameters
+     *
+     * @return \Recurly\Resources\InvoiceCollection Returns the authorize invoice
+     * @link   https://developers.recurly.com/api/v2021-02-25#operation/create_authorize_purchase
+     */
+    public function createAuthorizePurchase(array $body, array $options = []): \Recurly\Resources\InvoiceCollection
+    {
+        $path = $this->interpolatePath("/purchases/authorize", []);
+        return $this->makeRequest('POST', $path, $body, $options);
+    }
+  
+    /**
+     * Capture a purchase
+     *
+     * @param string $transaction_id Transaction ID or UUID. For ID no prefix is used e.g. `e28zov4fw0v2`. For UUID use prefix `uuid-`, e.g. `uuid-123457890`.
+     * @param array  $options        Associative array of optional parameters
+     *
+     * @return \Recurly\Resources\InvoiceCollection Returns the captured invoice
+     * @link   https://developers.recurly.com/api/v2021-02-25#operation/create_capture_purchase
+     */
+    public function createCapturePurchase(string $transaction_id, array $options = []): \Recurly\Resources\InvoiceCollection
+    {
+        $path = $this->interpolatePath("/purchases/{transaction_id}/capture", ['transaction_id' => $transaction_id]);
+        return $this->makeRequest('POST', $path, [], $options);
+    }
+  
+    /**
+     * Cancel Purchase
+     *
+     * @param string $transaction_id Transaction ID or UUID. For ID no prefix is used e.g. `e28zov4fw0v2`. For UUID use prefix `uuid-`, e.g. `uuid-123457890`.
+     * @param array  $options        Associative array of optional parameters
+     *
+     * @return \Recurly\Resources\InvoiceCollection Returns the cancelled invoice
+     * @link   https://developers.recurly.com/api/v2021-02-25#operation/cancelPurchase
+     */
+    public function cancelpurchase(string $transaction_id, array $options = []): \Recurly\Resources\InvoiceCollection
+    {
+        $path = $this->interpolatePath("/purchases/{transaction_id}/cancel/", ['transaction_id' => $transaction_id]);
+        return $this->makeRequest('POST', $path, [], $options);
+    }
+  
+    /**
      * List the dates that have an available export to download.
      *
      * @param array $options Associative array of optional parameters
