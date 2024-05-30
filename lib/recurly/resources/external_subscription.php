@@ -360,7 +360,7 @@ class ExternalSubscription extends RecurlyResource
 
     /**
     * Getter method for the state attribute.
-    * External subscriptions can be active, canceled, expired, or past_due.
+    * External subscriptions can be active, canceled, expired, past_due, voided, revoked, or paused.
     *
     * @return ?string
     */
