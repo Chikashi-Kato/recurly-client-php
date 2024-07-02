@@ -1337,13 +1337,122 @@ endpoint to obtain only the newly generated `UniqueCouponCodes`.
      * @param string $custom_field_definition_id Custom Field Definition ID
      * @param array  $options                    Associative array of optional parameters
      *
-     * @return \Recurly\Resources\CustomFieldDefinition An custom field definition.
+     * @return \Recurly\Resources\CustomFieldDefinition A custom field definition.
      * @link   https://developers.recurly.com/api/v2021-02-25#operation/get_custom_field_definition
      */
     public function getCustomFieldDefinition(string $custom_field_definition_id, array $options = []): \Recurly\Resources\CustomFieldDefinition
     {
         $path = $this->interpolatePath("/custom_field_definitions/{custom_field_definition_id}", ['custom_field_definition_id' => $custom_field_definition_id]);
         return $this->makeRequest('GET', $path, [], $options);
+    }
+  
+    /**
+     * Create a new general ledger account
+     *
+     * @param array $body    The body of the request.
+     * @param array $options Associative array of optional parameters
+     *
+     * @return \Recurly\Resources\GeneralLedgerAccount A new general ledger account.
+     * @link   https://developers.recurly.com/api/v2021-02-25#operation/create_general_ledger_account
+     */
+    public function createGeneralLedgerAccount(array $body, array $options = []): \Recurly\Resources\GeneralLedgerAccount
+    {
+        $path = $this->interpolatePath("/general_ledger_accounts", []);
+        return $this->makeRequest('POST', $path, $body, $options);
+    }
+  
+    /**
+     * List a site's general ledger accounts
+     *
+     * @param array $options Associative array of optional parameters
+     *
+     * Supported optional query string parameters:
+     *
+     * - $options['params']['ids'] (array): Filter results by their IDs. Up to 200 IDs can be passed at once using
+     *        commas as separators, e.g. `ids=h1at4d57xlmy,gyqgg0d3v9n1,jrsm5b4yefg6`.
+     *        
+     *        **Important notes:**
+     *        
+     *        * The `ids` parameter cannot be used with any other ordering or filtering
+     *          parameters (`limit`, `order`, `sort`, `begin_time`, `end_time`, etc)
+     *        * Invalid or unknown IDs will be ignored, so you should check that the
+     *          results correspond to your request.
+     *        * Records are returned in an arbitrary order. Since results are all
+     *          returned at once you can sort the records yourself.
+     * - $options['params']['limit'] (int): Limit number of records 1-200.
+     * - $options['params']['order'] (string): Sort order.
+     * - $options['params']['sort'] (string): Sort field. You *really* only want to sort by `updated_at` in ascending
+     *        order. In descending order updated records will move behind the cursor and could
+     *        prevent some records from being returned.
+     * - $options['params']['account_type'] (string): General Ledger Account type by which to filter the response.
+     *
+     * @return \Recurly\Pager A list of the site's general ledger accounts.
+     * @link   https://developers.recurly.com/api/v2021-02-25#operation/list_general_ledger_accounts
+     */
+    public function listGeneralLedgerAccounts(array $options = []): \Recurly\Pager
+    {
+        $path = $this->interpolatePath("/general_ledger_accounts", []);
+        return new \Recurly\Pager($this, $path, $options);
+    }
+  
+    /**
+     * Fetch a general ledger account
+     *
+     * @param string $general_ledger_account_id General Ledger Account ID
+     * @param array  $options                   Associative array of optional parameters
+     *
+     * @return \Recurly\Resources\GeneralLedgerAccount A general ledger account.
+     * @link   https://developers.recurly.com/api/v2021-02-25#operation/get_general_ledger_account
+     */
+    public function getGeneralLedgerAccount(string $general_ledger_account_id, array $options = []): \Recurly\Resources\GeneralLedgerAccount
+    {
+        $path = $this->interpolatePath("/general_ledger_accounts/{general_ledger_account_id}", ['general_ledger_account_id' => $general_ledger_account_id]);
+        return $this->makeRequest('GET', $path, [], $options);
+    }
+  
+    /**
+     * Update a general ledger account
+     *
+     * @param string $general_ledger_account_id General Ledger Account ID
+     * @param array  $body                      The body of the request.
+     * @param array  $options                   Associative array of optional parameters
+     *
+     * @return \Recurly\Resources\GeneralLedgerAccount The updated general ledger account.
+     * @link   https://developers.recurly.com/api/v2021-02-25#operation/update_general_ledger_account
+     */
+    public function updateGeneralLedgerAccount(string $general_ledger_account_id, array $body, array $options = []): \Recurly\Resources\GeneralLedgerAccount
+    {
+        $path = $this->interpolatePath("/general_ledger_accounts/{general_ledger_account_id}", ['general_ledger_account_id' => $general_ledger_account_id]);
+        return $this->makeRequest('PUT', $path, $body, $options);
+    }
+  
+    /**
+     * Get a single Performance Obligation.
+     *
+     * @param string $performance_obligation_id Performance Obligation id.
+     * @param array  $options                   Associative array of optional parameters
+     *
+     * @return \Recurly\Resources\PerformanceObligation A single Performance Obligation.
+     * @link   https://developers.recurly.com/api/v2021-02-25#operation/get_performance_obligation
+     */
+    public function getPerformanceObligation(string $performance_obligation_id, array $options = []): \Recurly\Resources\PerformanceObligation
+    {
+        $path = $this->interpolatePath("/performance_obligations/{performance_obligation_id}", ['performance_obligation_id' => $performance_obligation_id]);
+        return $this->makeRequest('GET', $path, [], $options);
+    }
+  
+    /**
+     * Get a site's Performance Obligations
+     *
+     * @param array $options Associative array of optional parameters
+     *
+     * @return \Recurly\Pager A list of Performance Obligations.
+     * @link   https://developers.recurly.com/api/v2021-02-25#operation/get_performance_obligations
+     */
+    public function getPerformanceObligations(array $options = []): \Recurly\Pager
+    {
+        $path = $this->interpolatePath("/performance_obligations", []);
+        return new \Recurly\Pager($this, $path, $options);
     }
   
     /**
@@ -1774,7 +1883,7 @@ endpoint to obtain only the newly generated `UniqueCouponCodes`.
     /**
      * Fetch an external subscription
      *
-     * @param string $external_subscription_id External subscription id
+     * @param string $external_subscription_id External subscription ID or external_id. For ID no prefix is used e.g. `e28zov4fw0v2`. For external_id use prefix `external-id-`, e.g. `external-id-123456`.
      * @param array  $options                  Associative array of optional parameters
      *
      * @return \Recurly\Resources\ExternalSubscription Settings for an external subscription.
@@ -3396,13 +3505,13 @@ endpoint to obtain only the newly generated `UniqueCouponCodes`.
     }
   
     /**
-     * Fetch an external payment_phase
+     * Fetch an external payment phase
      *
      * @param string $external_subscription_id  External subscription id
      * @param string $external_payment_phase_id External payment phase ID, e.g. `a34ypb2ef9w1`.
      * @param array  $options                   Associative array of optional parameters
      *
-     * @return \Recurly\Resources\ExternalPaymentPhase Details for an external payment_phase.
+     * @return \Recurly\Resources\ExternalPaymentPhase Details for an external payment phase.
      * @link   https://developers.recurly.com/api/v2021-02-25#operation/get_external_subscription_external_payment_phase
      */
     public function getExternalSubscriptionExternalPaymentPhase(string $external_subscription_id, string $external_payment_phase_id, array $options = []): \Recurly\Resources\ExternalPaymentPhase
