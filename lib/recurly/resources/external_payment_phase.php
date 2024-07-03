@@ -17,7 +17,6 @@ class ExternalPaymentPhase extends RecurlyResource
     private $_currency;
     private $_ending_billing_period_index;
     private $_ends_at;
-    private $_external_subscription;
     private $_id;
     private $_object;
     private $_offer_name;
@@ -145,29 +144,6 @@ class ExternalPaymentPhase extends RecurlyResource
     public function setEndsAt(string $ends_at): void
     {
         $this->_ends_at = $ends_at;
-    }
-
-    /**
-    * Getter method for the external_subscription attribute.
-    * Subscription from an external resource such as Apple App Store or Google Play Store.
-    *
-    * @return ?\Recurly\Resources\ExternalSubscription
-    */
-    public function getExternalSubscription(): ?\Recurly\Resources\ExternalSubscription
-    {
-        return $this->_external_subscription;
-    }
-
-    /**
-    * Setter method for the external_subscription attribute.
-    *
-    * @param \Recurly\Resources\ExternalSubscription $external_subscription
-    *
-    * @return void
-    */
-    public function setExternalSubscription(\Recurly\Resources\ExternalSubscription $external_subscription): void
-    {
-        $this->_external_subscription = $external_subscription;
     }
 
     /**

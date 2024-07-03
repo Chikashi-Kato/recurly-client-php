@@ -20,8 +20,10 @@ class ExternalSubscription extends RecurlyResource
     private $_created_at;
     private $_expires_at;
     private $_external_id;
+    private $_external_payment_phases;
     private $_external_product_reference;
     private $_id;
+    private $_imported;
     private $_in_grace_period;
     private $_last_purchased;
     private $_object;
@@ -33,6 +35,7 @@ class ExternalSubscription extends RecurlyResource
     private $_updated_at;
 
     protected static $array_hints = [
+        'setExternalPaymentPhases' => '\Recurly\Resources\ExternalPaymentPhase',
     ];
 
     
@@ -221,6 +224,29 @@ class ExternalSubscription extends RecurlyResource
     }
 
     /**
+    * Getter method for the external_payment_phases attribute.
+    * The phases of the external subscription payment lifecycle.
+    *
+    * @return array
+    */
+    public function getExternalPaymentPhases(): array
+    {
+        return $this->_external_payment_phases ?? [] ;
+    }
+
+    /**
+    * Setter method for the external_payment_phases attribute.
+    *
+    * @param array $external_payment_phases
+    *
+    * @return void
+    */
+    public function setExternalPaymentPhases(array $external_payment_phases): void
+    {
+        $this->_external_payment_phases = $external_payment_phases;
+    }
+
+    /**
     * Getter method for the external_product_reference attribute.
     * External Product Reference details
     *
@@ -264,6 +290,29 @@ class ExternalSubscription extends RecurlyResource
     public function setId(string $id): void
     {
         $this->_id = $id;
+    }
+
+    /**
+    * Getter method for the imported attribute.
+    * An indication of whether or not the external subscription was created by a historical data import.
+    *
+    * @return ?bool
+    */
+    public function getImported(): ?bool
+    {
+        return $this->_imported;
+    }
+
+    /**
+    * Setter method for the imported attribute.
+    *
+    * @param bool $imported
+    *
+    * @return void
+    */
+    public function setImported(bool $imported): void
+    {
+        $this->_imported = $imported;
     }
 
     /**

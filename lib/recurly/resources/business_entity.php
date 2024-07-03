@@ -14,12 +14,16 @@ class BusinessEntity extends RecurlyResource
 {
     private $_code;
     private $_created_at;
+    private $_default_liability_gl_account_id;
     private $_default_registration_number;
+    private $_default_revenue_gl_account_id;
     private $_default_vat_number;
+    private $_destination_tax_address_source;
     private $_id;
     private $_invoice_display_address;
     private $_name;
     private $_object;
+    private $_origin_tax_address_source;
     private $_subscriber_location_countries;
     private $_tax_address;
     private $_updated_at;
@@ -76,6 +80,32 @@ class BusinessEntity extends RecurlyResource
     }
 
     /**
+    * Getter method for the default_liability_gl_account_id attribute.
+    * The ID of a general ledger account. General ledger accounts are
+only accessible as a part of the Recurly RevRec Standard and
+Recurly RevRec Advanced features.
+
+    *
+    * @return ?string
+    */
+    public function getDefaultLiabilityGlAccountId(): ?string
+    {
+        return $this->_default_liability_gl_account_id;
+    }
+
+    /**
+    * Setter method for the default_liability_gl_account_id attribute.
+    *
+    * @param string $default_liability_gl_account_id
+    *
+    * @return void
+    */
+    public function setDefaultLiabilityGlAccountId(string $default_liability_gl_account_id): void
+    {
+        $this->_default_liability_gl_account_id = $default_liability_gl_account_id;
+    }
+
+    /**
     * Getter method for the default_registration_number attribute.
     * Registration number for the customer used on the invoice.
     *
@@ -99,6 +129,32 @@ class BusinessEntity extends RecurlyResource
     }
 
     /**
+    * Getter method for the default_revenue_gl_account_id attribute.
+    * The ID of a general ledger account. General ledger accounts are
+only accessible as a part of the Recurly RevRec Standard and
+Recurly RevRec Advanced features.
+
+    *
+    * @return ?string
+    */
+    public function getDefaultRevenueGlAccountId(): ?string
+    {
+        return $this->_default_revenue_gl_account_id;
+    }
+
+    /**
+    * Setter method for the default_revenue_gl_account_id attribute.
+    *
+    * @param string $default_revenue_gl_account_id
+    *
+    * @return void
+    */
+    public function setDefaultRevenueGlAccountId(string $default_revenue_gl_account_id): void
+    {
+        $this->_default_revenue_gl_account_id = $default_revenue_gl_account_id;
+    }
+
+    /**
     * Getter method for the default_vat_number attribute.
     * VAT number for the customer used on the invoice.
     *
@@ -119,6 +175,29 @@ class BusinessEntity extends RecurlyResource
     public function setDefaultVatNumber(string $default_vat_number): void
     {
         $this->_default_vat_number = $default_vat_number;
+    }
+
+    /**
+    * Getter method for the destination_tax_address_source attribute.
+    * The source of the address that will be used as the destinaion in determining taxes. Available only when the site is on an Elite plan. A value of "destination" refers to the "Customer tax address". A value of "origin" refers to the "Business entity tax address".
+    *
+    * @return ?string
+    */
+    public function getDestinationTaxAddressSource(): ?string
+    {
+        return $this->_destination_tax_address_source;
+    }
+
+    /**
+    * Setter method for the destination_tax_address_source attribute.
+    *
+    * @param string $destination_tax_address_source
+    *
+    * @return void
+    */
+    public function setDestinationTaxAddressSource(string $destination_tax_address_source): void
+    {
+        $this->_destination_tax_address_source = $destination_tax_address_source;
     }
 
     /**
@@ -211,6 +290,29 @@ class BusinessEntity extends RecurlyResource
     public function setObject(string $object): void
     {
         $this->_object = $object;
+    }
+
+    /**
+    * Getter method for the origin_tax_address_source attribute.
+    * The source of the address that will be used as the origin in determining taxes. Available only when the site is on an Elite plan. A value of "origin" refers to the "Business entity tax address". A value of "destination" refers to the "Customer tax address".
+    *
+    * @return ?string
+    */
+    public function getOriginTaxAddressSource(): ?string
+    {
+        return $this->_origin_tax_address_source;
+    }
+
+    /**
+    * Setter method for the origin_tax_address_source attribute.
+    *
+    * @param string $origin_tax_address_source
+    *
+    * @return void
+    */
+    public function setOriginTaxAddressSource(string $origin_tax_address_source): void
+    {
+        $this->_origin_tax_address_source = $origin_tax_address_source;
     }
 
     /**

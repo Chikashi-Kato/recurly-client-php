@@ -20,13 +20,16 @@ class GiftCard extends RecurlyResource
     private $_delivery;
     private $_gifter_account_id;
     private $_id;
+    private $_liability_gl_account_id;
     private $_object;
+    private $_performance_obligation_id;
     private $_product_code;
     private $_purchase_invoice_id;
     private $_recipient_account_id;
     private $_redeemed_at;
     private $_redemption_code;
     private $_redemption_invoice_id;
+    private $_revenue_gl_account_id;
     private $_unit_amount;
     private $_updated_at;
 
@@ -219,6 +222,32 @@ class GiftCard extends RecurlyResource
     }
 
     /**
+    * Getter method for the liability_gl_account_id attribute.
+    * The ID of a general ledger account. General ledger accounts are
+only accessible as a part of the Recurly RevRec Standard and
+Recurly RevRec Advanced features.
+
+    *
+    * @return ?string
+    */
+    public function getLiabilityGlAccountId(): ?string
+    {
+        return $this->_liability_gl_account_id;
+    }
+
+    /**
+    * Setter method for the liability_gl_account_id attribute.
+    *
+    * @param string $liability_gl_account_id
+    *
+    * @return void
+    */
+    public function setLiabilityGlAccountId(string $liability_gl_account_id): void
+    {
+        $this->_liability_gl_account_id = $liability_gl_account_id;
+    }
+
+    /**
     * Getter method for the object attribute.
     * Object type
     *
@@ -239,6 +268,32 @@ class GiftCard extends RecurlyResource
     public function setObject(string $object): void
     {
         $this->_object = $object;
+    }
+
+    /**
+    * Getter method for the performance_obligation_id attribute.
+    * The ID of a performance obligation. Performance obligations are
+only accessible as a part of the Recurly RevRec Standard and
+Recurly RevRec Advanced features.
+
+    *
+    * @return ?string
+    */
+    public function getPerformanceObligationId(): ?string
+    {
+        return $this->_performance_obligation_id;
+    }
+
+    /**
+    * Setter method for the performance_obligation_id attribute.
+    *
+    * @param string $performance_obligation_id
+    *
+    * @return void
+    */
+    public function setPerformanceObligationId(string $performance_obligation_id): void
+    {
+        $this->_performance_obligation_id = $performance_obligation_id;
     }
 
     /**
@@ -377,6 +432,32 @@ class GiftCard extends RecurlyResource
     public function setRedemptionInvoiceId(string $redemption_invoice_id): void
     {
         $this->_redemption_invoice_id = $redemption_invoice_id;
+    }
+
+    /**
+    * Getter method for the revenue_gl_account_id attribute.
+    * The ID of a general ledger account. General ledger accounts are
+only accessible as a part of the Recurly RevRec Standard and
+Recurly RevRec Advanced features.
+
+    *
+    * @return ?string
+    */
+    public function getRevenueGlAccountId(): ?string
+    {
+        return $this->_revenue_gl_account_id;
+    }
+
+    /**
+    * Setter method for the revenue_gl_account_id attribute.
+    *
+    * @param string $revenue_gl_account_id
+    *
+    * @return void
+    */
+    public function setRevenueGlAccountId(string $revenue_gl_account_id): void
+    {
+        $this->_revenue_gl_account_id = $revenue_gl_account_id;
     }
 
     /**

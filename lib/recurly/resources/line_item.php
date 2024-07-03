@@ -26,6 +26,7 @@ class LineItem extends RecurlyResource
     private $_currency;
     private $_custom_fields;
     private $_description;
+    private $_destination_tax_address_source;
     private $_discount;
     private $_end_date;
     private $_external_sku;
@@ -35,9 +36,12 @@ class LineItem extends RecurlyResource
     private $_item_code;
     private $_item_id;
     private $_legacy_category;
+    private $_liability_gl_account_code;
     private $_object;
     private $_origin;
+    private $_origin_tax_address_source;
     private $_original_line_item_invoice_id;
+    private $_performance_obligation_id;
     private $_plan_code;
     private $_plan_id;
     private $_previous_line_item_id;
@@ -48,6 +52,7 @@ class LineItem extends RecurlyResource
     private $_refund;
     private $_refunded_quantity;
     private $_refunded_quantity_decimal;
+    private $_revenue_gl_account_code;
     private $_revenue_schedule_type;
     private $_shipping_address;
     private $_start_date;
@@ -394,6 +399,29 @@ class LineItem extends RecurlyResource
     }
 
     /**
+    * Getter method for the destination_tax_address_source attribute.
+    * The source of the address that will be used as the destinaion in determining taxes. Available only when the site is on an Elite plan. A value of "destination" refers to the "Customer tax address". A value of "origin" refers to the "Business entity tax address".
+    *
+    * @return ?string
+    */
+    public function getDestinationTaxAddressSource(): ?string
+    {
+        return $this->_destination_tax_address_source;
+    }
+
+    /**
+    * Setter method for the destination_tax_address_source attribute.
+    *
+    * @param string $destination_tax_address_source
+    *
+    * @return void
+    */
+    public function setDestinationTaxAddressSource(string $destination_tax_address_source): void
+    {
+        $this->_destination_tax_address_source = $destination_tax_address_source;
+    }
+
+    /**
     * Getter method for the discount attribute.
     * The discount applied to the line item.
     *
@@ -606,6 +634,32 @@ class LineItem extends RecurlyResource
     }
 
     /**
+    * Getter method for the liability_gl_account_code attribute.
+    * Unique code to identify the ledger account. Each code must start
+with a letter or number. The following special characters are
+allowed: `-_.,:`
+
+    *
+    * @return ?string
+    */
+    public function getLiabilityGlAccountCode(): ?string
+    {
+        return $this->_liability_gl_account_code;
+    }
+
+    /**
+    * Setter method for the liability_gl_account_code attribute.
+    *
+    * @param string $liability_gl_account_code
+    *
+    * @return void
+    */
+    public function setLiabilityGlAccountCode(string $liability_gl_account_code): void
+    {
+        $this->_liability_gl_account_code = $liability_gl_account_code;
+    }
+
+    /**
     * Getter method for the object attribute.
     * Object type
     *
@@ -652,6 +706,29 @@ class LineItem extends RecurlyResource
     }
 
     /**
+    * Getter method for the origin_tax_address_source attribute.
+    * The source of the address that will be used as the origin in determining taxes. Available only when the site is on an Elite plan. A value of "origin" refers to the "Business entity tax address". A value of "destination" refers to the "Customer tax address".
+    *
+    * @return ?string
+    */
+    public function getOriginTaxAddressSource(): ?string
+    {
+        return $this->_origin_tax_address_source;
+    }
+
+    /**
+    * Setter method for the origin_tax_address_source attribute.
+    *
+    * @param string $origin_tax_address_source
+    *
+    * @return void
+    */
+    public function setOriginTaxAddressSource(string $origin_tax_address_source): void
+    {
+        $this->_origin_tax_address_source = $origin_tax_address_source;
+    }
+
+    /**
     * Getter method for the original_line_item_invoice_id attribute.
     * The invoice where the credit originated. Will only have a value if the line item is a credit created from a previous credit, or if the credit was created from a charge refund.
     *
@@ -672,6 +749,32 @@ class LineItem extends RecurlyResource
     public function setOriginalLineItemInvoiceId(string $original_line_item_invoice_id): void
     {
         $this->_original_line_item_invoice_id = $original_line_item_invoice_id;
+    }
+
+    /**
+    * Getter method for the performance_obligation_id attribute.
+    * The ID of a performance obligation. Performance obligations are
+only accessible as a part of the Recurly RevRec Standard and
+Recurly RevRec Advanced features.
+
+    *
+    * @return ?string
+    */
+    public function getPerformanceObligationId(): ?string
+    {
+        return $this->_performance_obligation_id;
+    }
+
+    /**
+    * Setter method for the performance_obligation_id attribute.
+    *
+    * @param string $performance_obligation_id
+    *
+    * @return void
+    */
+    public function setPerformanceObligationId(string $performance_obligation_id): void
+    {
+        $this->_performance_obligation_id = $performance_obligation_id;
     }
 
     /**
@@ -902,6 +1005,32 @@ class LineItem extends RecurlyResource
     public function setRefundedQuantityDecimal(string $refunded_quantity_decimal): void
     {
         $this->_refunded_quantity_decimal = $refunded_quantity_decimal;
+    }
+
+    /**
+    * Getter method for the revenue_gl_account_code attribute.
+    * Unique code to identify the ledger account. Each code must start
+with a letter or number. The following special characters are
+allowed: `-_.,:`
+
+    *
+    * @return ?string
+    */
+    public function getRevenueGlAccountCode(): ?string
+    {
+        return $this->_revenue_gl_account_code;
+    }
+
+    /**
+    * Setter method for the revenue_gl_account_code attribute.
+    *
+    * @param string $revenue_gl_account_code
+    *
+    * @return void
+    */
+    public function setRevenueGlAccountCode(string $revenue_gl_account_code): void
+    {
+        $this->_revenue_gl_account_code = $revenue_gl_account_code;
     }
 
     /**
